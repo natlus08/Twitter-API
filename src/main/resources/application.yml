@@ -1,0 +1,32 @@
+spring:
+  profiles: local, default
+datasource:
+  twitter:
+    url: jdbc:h2:mem:testdb
+    username: SA
+    password:  
+    driverClassName: org.h2.Driver
+    defaultSchema:
+    maxPoolSize: 10
+    hibernate:
+      hbm2ddl.method: create
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.H2Dialect
+---
+spring:
+  profiles: prod
+datasource:
+  twitter:
+    url: jdbc:mysql://localhost:3306/twitter
+    username: myuser
+    password: mypassword
+    driverClassName: com.mysql.jdbc.Driver
+    defaultSchema:
+    maxPoolSize: 20
+    hibernate:
+      hbm2ddl.method: update
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.MySQLDialect
+---
